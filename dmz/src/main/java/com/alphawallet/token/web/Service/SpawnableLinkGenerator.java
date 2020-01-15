@@ -102,9 +102,9 @@ class SpawnableLinkGenerator {
             tokenId += Numeric.toHexStringNoPrefixZeroPadded(Numeric.toBigInt(date.getBytes()), 38);
             tokenId += Numeric.toHexStringNoPrefixZeroPadded(BigInteger.valueOf(city), 2);
             tokenId += Numeric.toHexStringNoPrefixZeroPadded(BigInteger.valueOf(venue), 2);
-            //can use less bytes here but doesn't matter (teams)
-            tokenId += Numeric.toHexStringNoPrefixZeroPadded(BigInteger.valueOf(teamA), 6);
-            tokenId += Numeric.toHexStringNoPrefixZeroPadded(BigInteger.valueOf(teamB), 6);
+            tokenId += Numeric.toHexStringNoPrefixZeroPadded(BigInteger.valueOf(teamA), 2);
+            tokenId += Numeric.toHexStringNoPrefixZeroPadded(BigInteger.valueOf(teamB), 2);
+            tokenId += Numeric.toHexStringNoPrefixZeroPadded(BigInteger.ZERO, 8);
             tokenId += Numeric.toHexStringNoPrefixZeroPadded(BigInteger.valueOf(MATCH_NUMBER), 2);
             tokenId += Numeric.toHexStringNoPrefixZeroPadded(BigInteger.valueOf(category), 2);
             // Must increment the numero to change the token id as 721 can only map one token to one address
