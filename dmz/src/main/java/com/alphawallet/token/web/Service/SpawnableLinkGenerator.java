@@ -13,11 +13,11 @@ import java.util.List;
 class SpawnableLinkGenerator {
 
     private static List<BigInteger> tokens = new ArrayList<>();
-    private static final String contractAddress = "0x0f43923667843bccafd12a5c001a7838fa5fc8ab";
+    private static final String contractAddress = "0x89D142Bef8605646881C68dcD48cDAF17FE597dC";
     private static ParseMagicLink parseMagicLink = new ParseMagicLink(new CryptoFunctions(), null);
     //TODO set private key & chain id
-    private static final BigInteger privateKey = BigInteger.TEN;
-    private static final int chainId = 100;
+    private static final BigInteger privateKey = new BigInteger("0", 16);
+    private static final int chainId = 1;
 
     // Time todo put in right format & set each time
     private static final String date = "20240706210000+0300";
@@ -50,8 +50,8 @@ class SpawnableLinkGenerator {
     private static final long ALLIANZ_ARENA = 12;
 
     // Teams TODO set each time
-    private static final String TEAM_A = "USA";
-    private static final String TEAM_B = "AU";
+    private static final long TEAM_A = 1;
+    private static final long TEAM_B = 2;
 
     // Match number TODO set each time
     private static final long MATCH_NUMBER = 1;
@@ -71,15 +71,15 @@ class SpawnableLinkGenerator {
 
     public static void main(String[] args) throws SalesOrderMalformed {
         //TODO set token ids here
-        new SpawnableLinkGenerator(date, LONDON, PARKEN_STADIUM, TEAM_A, TEAM_B, 1);
+        new SpawnableLinkGenerator(date, LONDON, PARKEN_STADIUM, TEAM_A, TEAM_B, 5);
     }
 
     private SpawnableLinkGenerator(
             String date,
             long city,
             long venue,
-            String teamA,
-            String teamB,
+            long teamA,
+            long teamB,
             int quantity
     ) throws SalesOrderMalformed {
         // Set values here
@@ -95,15 +95,16 @@ class SpawnableLinkGenerator {
         System.out.println(link);
     }
 
-    private void setTokenIds(String date, long city, long venue, String teamA, String teamB, long category, int quantity)
+    private void setTokenIds(String date, long city, long venue, long teamA, long teamB, long category, int quantity)
     {
         while(quantity > 0) {
             String tokenId = "";
             tokenId += Numeric.toHexStringNoPrefixZeroPadded(Numeric.toBigInt(date.getBytes()), 38);
             tokenId += Numeric.toHexStringNoPrefixZeroPadded(BigInteger.valueOf(city), 2);
             tokenId += Numeric.toHexStringNoPrefixZeroPadded(BigInteger.valueOf(venue), 2);
-            tokenId += Numeric.toHexStringNoPrefixZeroPadded(Numeric.toBigInt(teamA.getBytes()), 6);
-            tokenId += Numeric.toHexStringNoPrefixZeroPadded(Numeric.toBigInt(teamB.getBytes()), 6);
+            //can use less bytes here but doesn't matter (teams)
+            tokenId += Numeric.toHexStringNoPrefixZeroPadded(BigInteger.valueOf(teamA), 6);
+            tokenId += Numeric.toHexStringNoPrefixZeroPadded(BigInteger.valueOf(teamB), 6);
             tokenId += Numeric.toHexStringNoPrefixZeroPadded(BigInteger.valueOf(MATCH_NUMBER), 2);
             tokenId += Numeric.toHexStringNoPrefixZeroPadded(BigInteger.valueOf(category), 2);
             // Must increment the numero to change the token id as 721 can only map one token to one address
