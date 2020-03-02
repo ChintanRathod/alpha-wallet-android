@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.*;
 
 import com.alphawallet.app.entity.MediaLinks;
@@ -159,6 +160,13 @@ public class NewSettingsFragment extends Fragment
         final LinearLayout layoutHelp = view.findViewById(R.id.layout_help_faq);
         layoutHelp.setOnClickListener(v -> {
             viewModel.showHelp(getContext());
+        });
+
+        final LinearLayout layoutClearBrowserCache = view.findViewById(R.id.layout_clear_browser_cache);
+        layoutClearBrowserCache.setOnClickListener(v -> {
+            WebView webView = new WebView(getContext());
+            webView.clearCache(true);
+            Toast.makeText(getContext(), getString(R.string.toast_browser_cache_cleared), Toast.LENGTH_SHORT).show();
         });
 
         final LinearLayout layoutTelegram = view.findViewById(R.id.layout_telegram);

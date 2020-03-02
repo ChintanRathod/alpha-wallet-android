@@ -44,6 +44,7 @@
     <string name="toast_message_wallet_imported">The wallet was imported</string>
     <string name="toast_message_wallet_exported">A backup was created</string>
     <string name="toast_qr_code_no_address">QR code doesn\'t contain valid address</string>
+    <string name="toast_browser_cache_cleared">Browser Cache Cleared</string>
 
     <!-- Labels -->
     <string name="label_from">From</string>
@@ -123,6 +124,7 @@
     <string name="toolbar_header_settings">Settings</string>
     <string name="toolbar_header_help">Help \u0026 FAQ</string>
     <string name="toolbar_header_transactions">Transactions</string>
+    <string name="toolbar_header_clear_browser_cache">Clear Browser Cache</string>
     <string name="settings_my_wallet_address">My Wallet Address</string>
     <string name="settings_notification">Notifications</string>
     <string name="title_redeem">Redeem Ticket</string>
